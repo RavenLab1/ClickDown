@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+*.gameforge.json
+*.bak.html
+.vscode/
+.idea/
