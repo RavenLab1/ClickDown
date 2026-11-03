@@ -111,6 +111,7 @@ main::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:25;
 .shape-lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:14px 18px;pointer-events:none}
 .shape-lbl .txt{pointer-events:auto;text-align:center;font-weight:700;font-size:15px;color:var(--g);line-height:1.4;min-width:12px;max-width:100%;text-shadow:var(--tglow)}
 .k-triangle .shape-lbl{padding-top:38%}
+.shape-lbl .txt.al{width:100%}
 .k-arrowR .shape-lbl,.k-arrowL .shape-lbl{padding:6px 22%;}
 .k-arrowR .shape-lbl .txt,.k-arrowL .shape-lbl .txt{font-size:12px}
 .k-frame .shape-lbl{align-items:flex-start;justify-content:flex-start;padding:16px 22px}
@@ -160,6 +161,7 @@ kbd{font-family:inherit;font-size:11px;background:var(--gdim);color:var(--g);bor
 .cb.danger:hover{background:#3a1a18;color:#c0504a}
 .cb .i{width:17px;height:17px}
 .sep{width:1px;height:22px;background:var(--line2);margin:0 4px;flex:none}
+.fs-lbl{min-width:26px;text-align:center;padding:0 2px;color:var(--g2)}
 .ctx-lbl{font-size:12px;font-weight:700;color:var(--gm);padding:0 6px;white-space:nowrap}
 .sw{width:22px;height:22px;border-radius:50%;border:2px solid var(--panel);background:var(--sw);box-shadow:0 0 0 1px var(--line2);padding:0;flex:none;transition:transform .12s}
 .sw:hover{transform:scale(1.12)}
@@ -413,6 +415,7 @@ addCol:'<rect x="4" y="3.5" width="9" height="17" rx="1.5"/><path d="M15.5 12h5M
 delRow:'<rect x="3.5" y="4" width="17" height="9" rx="1.5"/><path d="M9.5 18h5"/>',
 delCol:'<rect x="4" y="3.5" width="9" height="17" rx="1.5"/><path d="M15.5 12h5"/>',
 fontUp:'<path d="M3 19l5-13 5 13M4.8 14.5h6.4"/><path d="M18 8v8M14 12h8"/>',
+alignL:'<path d="M4 6h16M4 10h10M4 14h16M4 18h10"/>',alignC:'<path d="M4 6h16M7 10h10M4 14h16M7 18h10"/>',alignR:'<path d="M4 6h16M10 10h10M4 14h16M10 18h10"/>',
 fontDown:'<path d="M3 19l5-13 5 13M4.8 14.5h6.4"/><path d="M14 12h8"/>',
 send:'<path d="M4 12h12M12 6l6 6-6 6"/><path d="M20 5v14"/>',
 k_rect:'<rect x="4" y="6" width="16" height="12" rx="2.5"/>',
@@ -435,7 +438,7 @@ undo:'تراجع (Ctrl+Z)',redo:'إعادة (Ctrl+Shift+Z)',menu:'القائمة
 exportJ:'تصدير المشروع (JSON)',importJ:'استيراد مشروع…',resetStarter:'استعادة مشروع البداية',clearBoard:'مسح السبورة',shortcuts:'اختصارات لوحة المفاتيح',
 confirmReset:'سيتم استبدال السبورة والمهام الحالية بمشروع البداية (يمكنك التراجع). متابعة؟',confirmClear:'حذف كل عناصر السبورة؟ (يمكنك التراجع)',
 t_select:'تحديد',t_pan:'تحريك اللوحة',t_pen:'قلم حر',t_sticky:'ملاحظة لاصقة',t_shape:'شكل',t_text:'نص',t_image:'صورة',t_table:'جدول',t_list:'قائمة مهام',t_stamp:'ختم',
-dup:'تكرار',front:'للأمام',back:'للخلف',del:'حذف',toTask:'إلى مهمة',addRow:'صف',addCol:'عمود',delRow:'حذف صف',delCol:'حذف عمود',addItem:'عنصر',itemsToTasks:'إلى المهام',bold:'عريض',bigger:'تكبير',smaller:'تصغير',selected:'{n} عناصر',
+dup:'تكرار',front:'للأمام',back:'للخلف',del:'حذف',toTask:'إلى مهمة',addRow:'صف',addCol:'عمود',delRow:'حذف صف',delCol:'حذف عمود',addItem:'عنصر',itemsToTasks:'إلى المهام',bold:'عريض',bigger:'تكبير الخط',smaller:'تصغير الخط',alignL:'محاذاة لليسار',alignC:'توسيط',alignR:'محاذاة لليمين',selected:'{n} عناصر',
 zoomIn:'تكبير',zoomOut:'تصغير',fit:'توسيط المحتوى',reset100:'إعادة إلى ١٠٠٪',helpB:'الاختصارات',
 st_backlog:'بنك الأفكار',st_todo:'للتنفيذ',st_doing:'قيد العمل',st_review:'مراجعة',st_done:'منجز',
 p_urgent:'عاجل',p_high:'مرتفع',p_normal:'عادي',p_low:'منخفض',
@@ -461,7 +464,7 @@ undo:'Undo (Ctrl+Z)',redo:'Redo (Ctrl+Shift+Z)',menu:'Menu',
 exportJ:'Export project (JSON)',importJ:'Import project…',resetStarter:'Restore starter project',clearBoard:'Clear whiteboard',shortcuts:'Keyboard shortcuts',
 confirmReset:'Replace the current board and tasks with the starter project? (You can undo.)',confirmClear:'Delete everything on the whiteboard? (You can undo.)',
 t_select:'Select',t_pan:'Pan',t_pen:'Freehand pen',t_sticky:'Sticky note',t_shape:'Shape',t_text:'Text',t_image:'Image',t_table:'Table',t_list:'Checklist',t_stamp:'Stamp',
-dup:'Duplicate',front:'Front',back:'Back',del:'Delete',toTask:'To task',addRow:'Row',addCol:'Column',delRow:'Del row',delCol:'Del col',addItem:'Item',itemsToTasks:'To tasks',bold:'Bold',bigger:'Bigger',smaller:'Smaller',selected:'{n} items',
+dup:'Duplicate',front:'Front',back:'Back',del:'Delete',toTask:'To task',addRow:'Row',addCol:'Column',delRow:'Del row',delCol:'Del col',addItem:'Item',itemsToTasks:'To tasks',bold:'Bold',bigger:'Bigger text',smaller:'Smaller text',alignL:'Align left',alignC:'Align center',alignR:'Align right',selected:'{n} items',
 zoomIn:'Zoom in',zoomOut:'Zoom out',fit:'Center content',reset100:'Reset to 100%',helpB:'Shortcuts',
 st_backlog:'Backlog',st_todo:'To do',st_doing:'In progress',st_review:'Review',st_done:'Done',
 p_urgent:'Urgent',p_high:'High',p_normal:'Normal',p_low:'Low',
@@ -493,6 +496,11 @@ const POLY={diamond:[[50,0],[100,50],[50,100],[0,50]],triangle:[[50,0],[100,100]
 arrowR:[[0,30],[62,30],[62,0],[100,50],[62,100],[62,70],[0,70]],arrowL:[[100,30],[38,30],[38,0],[0,50],[38,100],[38,70],[100,70]]};
 const EMOJI=['⭐','🔥','❓','✅','💡','❤️','🎯','⚠️','🏆','🎮','🐞','👍'];
 const AUTOH=new Set(['text','table','list']);
+const TEXTY=new Set(['text','sticky','shape']);
+const baseFs=n=>n.type==='text'?24:n.type==='sticky'?15.5:n.kind==='frame'?20:(n.kind==='arrowR'||n.kind==='arrowL')?12:15;
+const curFs=n=>n.type==='text'?(n.size||24):(n.fs||baseFs(n));
+const curAlign=n=>n.align||(n.type==='shape'&&n.kind!=='frame'?'center':(n.dir==='rtl'?'right':'left'));
+const txtStyle=n=>{let st='';if(n.align)st+=`text-align:${n.align};`;if(n.type!=='text'&&n.fs)st+=`font-size:${n.fs}px;`;return st};
 const MINW={sticky:90,text:60,shape:40,pen:8,image:40,table:200,list:180,stamp:24};
 const STATUSES=['backlog','todo','doing','review','done'];
 const SCOLOR={backlog:'#4a6b53',todo:'#3a9cb8',doing:'#b8913a',review:'#6577b8',done:'#3fbf6a'};
@@ -711,9 +719,9 @@ function shapeHTML(n){
 function nodeHTML(n){
   const ph=k=>` data-ph="${esc(t(k))}"`;
   switch(n.type){
-    case'sticky':return`<div class="body"><div class="txt" data-edit="text"${ph('phSticky')}>${esc(n.text)}</div></div>`;
-    case'text':return`<div class="txt" data-edit="text"${ph('phText')} style="font-size:${n.size||24}px;font-weight:${n.bold?800:500}">${esc(n.text)}</div>`;
-    case'shape':return shapeHTML(n)+`<div class="shape-lbl"${n.dir?` dir="${n.dir}"`:''}><div class="txt" data-edit="text">${esc(n.text)}</div></div>`;
+    case'sticky':return`<div class="body"><div class="txt" data-edit="text"${ph('phSticky')} style="${txtStyle(n)}">${esc(n.text)}</div></div>`;
+    case'text':return`<div class="txt" data-edit="text"${ph('phText')} style="font-size:${n.size||24}px;font-weight:${n.bold?800:500};${n.align?`text-align:${n.align}`:''}">${esc(n.text)}</div>`;
+    case'shape':return shapeHTML(n)+`<div class="shape-lbl"${n.dir?` dir="${n.dir}"`:''}><div class="txt${n.align?' al':''}" data-edit="text" style="${txtStyle(n)}">${esc(n.text)}</div></div>`;
     case'pen':return`<svg width="${n.w}" height="${n.h}"><path d="${penD(n)}" fill="none" style="stroke:var(--solid)" stroke-width="${n.width||4}" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
     case'image':return`<img src="${esc(n.src)}" alt="" draggable="false">`;
     case'stamp':return`<div class="stamp" style="font-size:${Math.round(n.w*.8)}px">${esc(n.emoji)}</div>`;
@@ -1112,11 +1120,20 @@ function renderCtx(){
   if(!one)h+=`<span class="ctx-lbl">${esc(t('selected',{n:ns.length}))}</span><i class="sep"></i>`;
   const colorable=ns.filter(n=>!['image','stamp'].includes(n.type));
   if(colorable.length){const c0=colorable[0].color;const same=colorable.every(n=>n.color===c0);h+=swatches(same?c0:null,'act-color',one&&one.type==='sticky'?PAL_KEYS.filter(k=>k!=='slate'):PAL_KEYS)+'<i class="sep"></i>'}
+  const texty=ns.every(n=>TEXTY.has(n.type));
+  let textGroup='';
+  if(texty){
+    const a0=curAlign(ns[0]),sameA=ns.every(n=>curAlign(n)===a0);
+    textGroup=B('fontDown','fontDown',t('smaller'))+`<span class="ctx-lbl fs-lbl">${one?Math.round(curFs(one)):''}</span>`+B('fontUp','fontUp',t('bigger'))
+      +(one&&one.type==='text'?B('bold','bold',t('bold'),'',one.bold?'on':''):'')+'<i class="sep"></i>'
+      +['left','center','right'].map(a=>B('align','align'+a[0].toUpperCase(),t('align'+a[0].toUpperCase()),`data-v="${a}"`,sameA&&a0===a?'on':'')).join('')+'<i class="sep"></i>';
+    if(!one)h+=textGroup;
+  }
   if(one){
     switch(one.type){
-      case'text':h+=B('fontDown','fontDown',t('smaller'))+B('fontUp','fontUp',t('bigger'))+B('bold','bold',t('bold'),'',one.bold?'on':'')+'<i class="sep"></i>'+BL('toTask','task',t('toTask'));break;
-      case'sticky':h+=BL('toTask','task',t('toTask'));break;
-      case'shape':h+=KINDS.map(k=>`<button class="cb${one.kind===k?' on':''}" data-act="kind" data-v="${k}" title="${esc(t('k_'+k))}">${svg('k_'+k)}</button>`).join('')+'<i class="sep"></i>'+BL('toTask','task',t('toTask'));break;
+      case'text':h+=textGroup+BL('toTask','task',t('toTask'));break;
+      case'sticky':h+=textGroup+BL('toTask','task',t('toTask'));break;
+      case'shape':h+=KINDS.map(k=>`<button class="cb${one.kind===k?' on':''}" data-act="kind" data-v="${k}" title="${esc(t('k_'+k))}">${svg('k_'+k)}</button>`).join('')+'<i class="sep"></i>'+textGroup+BL('toTask','task',t('toTask'));break;
       case'pen':h+=[2,4,8,14].map(w=>`<button class="pw${one.width===w?' on':''}" data-act="penw" data-v="${w}"><i style="width:${Math.max(4,w)}px;height:${Math.max(4,w)}px"></i></button>`).join('');break;
       case'table':h+=BL('addRow','addRow',t('addRow'))+BL('addCol','addCol',t('addCol'))+B('delRow','delRow',t('delRow'))+B('delCol','delCol',t('delCol'));break;
       case'list':h+=BL('addItem','plus',t('addItem'))+BL('itemsToTasks','send',t('itemsToTasks'));break;
@@ -1140,11 +1157,15 @@ ctxbar.addEventListener('click',e=>{
     case'back':{const s=new Set(ns.map(n=>n.id));state.nodes=[...state.nodes.filter(n=>s.has(n.id)),...state.nodes.filter(n=>!s.has(n.id))];reorderDOM();commit();return}
     case'toTask':if(one)nodeToTask(one);return;
     case'itemsToTasks':if(one)listToTasks(one);return;
+    case'fontUp':case'fontDown':case'align':{
+      for(const n of ns){if(!TEXTY.has(n.type))continue;
+        if(act==='align')n.align=v;
+        else{const f=curFs(n),nf=act==='fontUp'?Math.min(160,Math.max(f+1,Math.round(f*1.15))):Math.max(8,Math.min(f-1,Math.round(f/1.15)));if(n.type==='text')n.size=nf;else n.fs=nf}
+        renderNode(n);}
+      refreshSel();commit();return}
   }
   if(!one)return;
   switch(act){
-    case'fontUp':one.size=Math.min(160,Math.round((one.size||24)*1.15));break;
-    case'fontDown':one.size=Math.max(10,Math.round((one.size||24)/1.15));break;
     case'bold':one.bold=!one.bold;break;
     case'kind':one.kind=v;break;
     case'penw':one.width=+v;break;
